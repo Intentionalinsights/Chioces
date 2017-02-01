@@ -1,0 +1,215 @@
+body {
+  font-family: arial; }
+
+h1, h2, h3, h4 {
+  font-family: 'News Cycle', sans-serif; }
+
+.c0 {
+  color: #FFFFFF; }
+
+.c1 {
+  color: #003056; }
+
+.c2 {
+  color: #04518C; }
+
+.c3 {
+  color: #00A1D9; }
+
+.c4 {
+  color: #47D9BF; }
+
+.c5 {
+  color: #F2D03B; }
+
+html {
+  height: 100%; }
+
+body {
+  margin: 0;
+  padding: 0; }
+
+.container-sm {
+  width: 520px;
+  margin: 0px auto; }
+
+header {
+  background-color: rgba(255, 255, 255, 0.8); }
+  header > .row > .container {
+    padding: 2px;
+    background: none;
+    border: none;
+    margin-bottom: 5px; }
+
+.container {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 10px;
+  margin-bottom: 10px; }
+  .container > h1 {
+    margin-top: 0px; }
+
+.nav-global {
+  background: rgba(255, 255, 255, 0.5); }
+  .nav-global .container {
+    background: none;
+    padding: 0px;
+    border: none;
+    border-radius: 0px;
+    margin-bottom: 0px; }
+  .nav-global ul.nav {
+    width: 100%; }
+    .nav-global ul.nav > li {
+      width: 15%;
+      margin: 0px; }
+
+.nav-global ul.nav.navbar-nav > li > a,
+.nav-global ul.nav.navbar-nav > li > ul > li > a {
+  font-size: 14px;
+  text-align: center;
+  color: #00A1D9; }
+
+.nav-global ul.nav.navbar-nav > li > a:hover {
+  color: #04518C;
+  background: #fff;
+  border-radius: 10px; }
+
+.nav-global ul.nav.navbar-nav > li > a > i {
+  color: #47D9BF; }
+
+.nav-global ul.nav.navbar-nav > li > a:hover > i {
+  color: #F2D03B; }
+
+.nav-global ul.nav.navbar-nav > li > a > i.fa-caret-down {
+  font-size: 12px;
+  color: #F2D03B; }
+
+.newlsetter_mod.row {
+  padding-top: 44px; }
+
+body .well.well3 {
+  background-color: #8DD8F2;
+  border-color: #00A1D9; }
+
+body .well.well4 {
+  background-color: #A0F2E4;
+  border-color: #47D9BF; }
+
+body .well.well5 {
+  background-color: #FAF3D4;
+  border-color: #F2D03B; }
+
+.social {
+  text-align: center; }
+
+.social a {
+  font-size: 48px;
+  color: #00A1D9; }
+
+.blog-list-group > .list-group-item {
+  background: rgba(255, 255, 255, 0.7);
+  border: none; }
+
+.blog-list-group img {
+  margin-right: 11px; }
+
+.newlsetter_mod > span {
+  display: block;
+  width: 100%;
+  text-align: left;
+  color: #777;
+  font-family: 'News Cycle', sans-serif;
+  letter-spacing: 1px;
+  font-size: 12px;
+  padding-bottom: 2px; }
+
+.newlsetter_mod .fa {
+  font-size: 20px;
+  color: #fff; }
+
+.newlsetter_mod .input-group > span {
+  border: 1px solid #00A1D9;
+  background-color: #00A1D9;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold; }
+
+.login-container {
+  width: 640px;
+  margin: 0px auto; }
+
+.social-login-wrapper {
+  text-align: center; }
+
+#quickcontribute .contribute-group > label {
+  display: none; }
+#quickcontribute .btn {
+  display: block;
+  width: 100%; }
+#quickcontribute input[type=text] {
+  text-align: center;
+  font-weight: 200;
+  font-size: 35px;
+  height: 60px; }
+
+.legal > .well {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  color: #777; }
+
+#typography {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  margin-left: -10px; }
+
+footer {
+  text-align: center;
+  color: #ccc;
+  font-size: 12px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.5); }
+
+.modal-body > #contribution_form {
+  max-width: 300px;
+  margin: 0px auto; }
+
+.modal-body > #contribution_form .input-group-addon > i {
+  font-size: 32px;
+  color: #999; }
+
+.modal-body > #contribution_form #contribution_amount {
+  width: 255px;
+  font-size: 64px;
+  height: auto;
+  font-weight: bold;
+  text-align: center;
+  margin: 0px auto;
+  font-family: 'News Cycle', sans-serif; }
+
+.disqus_holder {
+  margin-left: -10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #eee;
+  padding: 12px; }
+
+#inin_newsletter_box {
+  float: right;
+  font-size: 120%; }
+
+#inin_newsletter_box fa {
+  color: inherit;
+  margin-left: 10px; }
+
+#sidebar-wrapper {
+  background: #00A1D9;
+  color: #fff;
+  border-radius: 0px 4px 4px 0px; }
+  #sidebar-wrapper .sidebar-header a,
+  #sidebar-wrapper .accordion-group .accordion-heading a,
+  #sidebar-wrapper .accordion-group .accordion-inner ul a,
+  #sidebar-wrapper a > .text-muted {
+    color: #fff; }
+
+/*# sourceMappingURL=template.css.map */
