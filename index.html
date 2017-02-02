@@ -357,9 +357,10 @@ body {
                 This is really important to help you avoid making a bad decision - don't skip this step by simply filling
                 out random letter strings unless you're really confident. And if you're really confident, take some time
                 to consider the overconfidence bias box</p>
-            <p v-for="thoughtError in vm.thoughtErrors">
-                <a :href="thoughtError.url">{{thoughtError.label}}</a><br />
-                <textarea v-model="thoughtError.result" class="wideInput"></textarea>
+                <br />
+            <p v-for="thoughtError in thoughtErrors">
+                &bull; {{thoughtError.description}} (<a :href="thoughtError.url">more info on {{thoughtError.label}}</a>)<br />
+                <textarea v-model="vm.biases[thoughtError.id]" class="wideInput"></textarea>
             </p>
             <br />
         </div>
@@ -473,54 +474,72 @@ body {
                                                             'name': '',
                                                             'a1': undefined
                                                         }],
+                                                        'biases': {}
+                                                    },
                                                         'thoughtErrors': [
                                                             {
+                                                                'description': 'We naturally prefer avoiding losses to acquiring equivalent gains. Look for factors that you might loose something and consider adjusting the wuight to take on more risk.',
                                                                 'label': 'loss aversion',
+                                                                'id': 'loss',
                                                                 'url': 'https://en.wikipedia.org/wiki/Loss_aversion',
-                                                                'result': ''
                                                             },
                                                             {
+                                                                'description': 'We naturally prefer things to stay the same. Consider increasing the weight for factors that change the status quo.',
                                                                 'label': 'status quo bias',
+                                                                'id': 'statusQuo',
                                                                 'url': 'https://en.wikipedia.org/wiki/Status_quo_bias',
-                                                                'result': ''
                                                             },
                                                             {
                                                                 'label': 'confirmation bias',
+                                                                'id': 'confirmation',
                                                                 'url': 'http://intentionalinsights.org/how-to-protect-yourself-from-false-beliefs',
                                                                 'result': ''
                                                             },
                                                             {
                                                                 'label': 'attentional bias',
+                                                                'id': 'attention',
                                                                 'url': 'http://intentionalinsights.org/why-you-dont-think-youre-beautiful',
                                                                 'result': ''
                                                             },
                                                             {
                                                                 'label': 'overconfidence',
+                                                                'id': 'overconfidence',
                                                                 'url': 'https://www.youtube.com/watch?v=UDy-T53Pie4',
                                                                 'result': ''
                                                             },
                                                             {
                                                                 'label': 'optimism bias',
+                                                                'id': 'optimism',
                                                                 'url': 'https://en.wikipedia.org/wiki/Optimism_bias',
                                                                 'result': ''
                                                             },
                                                             {
                                                                 'label': 'pessimism bias',
+                                                                'id': 'pessimism',
                                                                 'url': 'http://intentionalinsights.org/advice-that-works-for-anyone',
                                                                 'result': ''
                                                             },
                                                             {
                                                                 'label': 'halo and horns effect',
+                                                                'id': 'haloHorns',
                                                                 'url': 'https://en.wikipedia.org/wiki/Halo_effect',
                                                                 'result': ''
                                                             }
                                                         ]
-                                                    }
                                                 },
                                                 beforeMount: function (){
                                                             var pastData = localStorage.getItem("ChooseData");
                                                             if (pastData != undefined)
                                                                 this.vm = JSON.parse(pastData); 
+
+                                                                //Prep the biases object with the thought errors
+                                                                if (this.vm.biases == undefined)
+                                                                    this.vm.biases = {};
+                                                                this.thoughtErrors.forEach((te) => {
+                                                                    if (this.vm.biases[te.id] == undefined)
+                                                                        this.vm.biases[te.id] = "";
+                                                                });
+
                                                 },
                                                 methods: {
 
@@ -571,10 +590,13 @@ body {
 
                                                         //See if they filled out all the thoughterror textareas before allowing them to go to the next step.
                                                         var allCompleted = true;
-                                                        this.vm.thoughtErrors.forEach((te) => {
-                                                            if (te.result.length == 0)
+                                                        for (var k in this.vm.biases) {
+                                                            if (this.vm.biases.hasOwnProperty(k)) {
+                                                                if (this.vm.biases[k] == "")
                                                                 allCompleted = false;
-                                                        });
+                                                            }
+                                                        }
+
                                                         this.vm.thoughtErrorsCompleted = allCompleted;
 
                                                         // Calculate totals
