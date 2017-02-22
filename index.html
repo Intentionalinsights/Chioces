@@ -451,6 +451,8 @@ body {
         </tr>
     </tbody>
 </table>
+<br />
+<button v-on:click="downloadData(attr)">Download your decision data</button>
 {{ calcData() }}
 </div>
 
@@ -542,6 +544,36 @@ body {
 
                                                 },
                                                 methods: {
+                                                    downloadData: function () {
+                                                        var cr = '\r\n';
+                                                        var comma = ',';
+                                                        var d = comma + comma;
+                                                        //attributes
+                                                        this.vm.attributes.forEach((a) => {
+                                                            d += a.label + comma ;
+                                                        });
+                                                        //Weights
+                                                        d += cr + comma + comma;
+                                                        this.vm.attributes.forEach((a) => {
+                                                            d += a.weight + comma ;
+                                                        });
+                                                        d += cr;
+                                                        //options and results
+                                                        this.vm.options.forEach((o) => {
+                                                            if (o.name.length > 0){
+                                                                d += o.name + comma;
+                                                                d += o.total + comma; 
+                                                                this.vm.attributes.forEach((a) => {
+                                                                    if (a.label.length > 0){
+                                                                        d += o[a.id] + comma;
+                                                                    }
+                                                                });
+                                                            }
+                                                            d += cr;
+                                                        });
+                                                        var blob = new Blob([d], {type: "text/plain;charset=utf-8"});
+                                                        saveAs(blob, "Decision Data.csv");
+                                                    },
 
                                                     nextPage: function () {
                                                         if (this.vm.page == 5 && this.vm.thoughtErrorsCompleted == false) {
@@ -746,7 +778,7 @@ body {
     <script src="./inin_files/Grid.min.js.download"></script>
     <!--growl.plugin.js-->
     <script src="./inin_files/jquery.growl.min.js.download"></script>
-
+    <script src="./FileSaver.min.js"></script>
 </body>
 
 </html>
