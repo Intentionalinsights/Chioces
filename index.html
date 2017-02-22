@@ -419,7 +419,7 @@ body {
                 <input v-model="attr.label" placeholder="factor name">
             </th>
             <th>
-                <button v-on:click="addAttribute()">add Factor</button>
+                <button v-on:click="addAttribute()">add factor</button>
             </th>
         </tr>
         <tr>
@@ -443,21 +443,22 @@ body {
                 <input v-if="attr.weight && option.name" v-model="option[attr.id]" placeholder="rank" type="number" min="0" max="10">
                 <!--{{option[attr.id]*attr.weight||0}}-->
             </td>
-            <td><button v-on:click="removeOption(option)">remove option</button>
+            <td><button  v-if="option.name" v-on:click="removeOption(option)">remove</button>
             </td>
         </tr>
         <tr>
             <td>
-                <button v-on:click="addOption()">add Option</button>
+                <button v-on:click="addOption()">add option</button>
             </td>
+            <th v-if="vm.page >= 4"></th>
             <td v-for="attr in vm.attributes" class="buttoncell">
-                <button v-on:click="removeAttribute(attr)">remove</button>
+                <button   v-if="attr.label" v-on:click="removeAttribute(attr)">remove</button>
             </td>
         </tr>
     </tbody>
 </table>
 <br />
-<button v-on:click="downloadData(attr)">Download your decision data</button>
+<button  v-on:click="downloadData(attr)">Download your decision data</button>
 {{ calcData() }}
 </div>
 
