@@ -413,19 +413,24 @@ body {
 <table class="compareTable">
     <thead>
         <tr>
-            <th rowspan="2"></th>
             <th rowspan="2" v-if="vm.page >= 4"></th>
+            <th style="text-align: right;">factors&nbsp;</th>
             <th v-for="attr in vm.attributes">
-                <input v-model="attr.label" placeholder="attribute">
+                <input v-model="attr.label" placeholder="factor name">
             </th>
             <th>
                 <button v-on:click="addAttribute()">add Factor</button>
             </th>
         </tr>
         <tr>
+            <th style="text-align: right;">weights&nbsp;</th>
             <th v-for="attr in vm.attributes">
-                <input v-if="attr.label" v-model="attr.weight" placlickceholder="weight" type="number">
+                <input v-if="attr.label" v-model="attr.weight" placlickceholder="weight" type="number" min="0" max="10">
             </th>
+        </tr>
+        <tr>
+            <th >options</th>
+            <th v-if="vm.page >= 4"  style="text-align: right;">scores</th>
         </tr>
     </thead>
     <tbody>
@@ -435,7 +440,7 @@ body {
             </td>
             <td v-if="vm.page >= 4" class="totalCell">{{option.total}}</td>
             <td v-for="attr in vm.attributes">
-                <input v-if="attr.weight && option.name" v-model="option[attr.id]" placeholder="rank" type="number">
+                <input v-if="attr.weight && option.name" v-model="option[attr.id]" placeholder="rank" type="number" min="0" max="10">
                 <!--{{option[attr.id]*attr.weight||0}}-->
             </td>
             <td><button v-on:click="removeOption(option)">remove option</button>
