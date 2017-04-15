@@ -256,29 +256,8 @@ body {
             </p>
             <h2>What decision do you want to make?</h2>
             <p>Title you decision:<br />
-                <input type="text" v-model="vm.title" class="wideInput" /></p>
-            <h2>1. List your options</h2>
-            <p>For example: computers you might buy or the colleges you might attend. You can add more options later.</p>
-            <table class="narrowTable">
-                <tr>
-                    <td>Options</td>
-                </tr>
-                <tr v-for="option in vm.options">
-                    <td><input v-model="option.name" placeholder="option"></td>
-                    <td><button v-if="" v-on:click="removeOption(option)">remove option</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td> <button v-on:click="addOption()">add Option</button>
-                    </td>
-                </tr>
-            </table>
-            <p>Once your options have been added, click the <b>Next</b> button. You can also skip these instructions by scrolling
-                down and entering the data directly into the tool.</p>
-        </div>
-
-        <div v-if="vm.page==1" class="instructionPage">
-            <h2>2. List the attributes</h2>
+            <input type="text" v-model="vm.title" class="wideInput" /></p>
+            <h2>1. List the attributes</h2>
             <p>List the important attributes or factors that are important in choosing between the options.</p>
             <p>For a smart phone, the attributes could be cost, size, screen quality, sound quality, etc.</p>
             <table class="narrowTable">
@@ -294,13 +273,12 @@ body {
                         <button v-on:click="addAttribute()">add Factor</button>
                     </td>
                 </tr>
-
             </table>
             <br/>
         </div>
 
-        <div v-if="vm.page==2" class="instructionPage">
-            <h2>3. Weigh each attribute</h2>
+        <div v-if="vm.page==1" class="instructionPage">
+            <h2>2. Weigh each attribute</h2>
             <p>Weigh each attribute from 1 to 10 based upon its importance to you (1 lowest, 10 highest.) Use your first guess.
                 You can change it later.
             </p>
@@ -325,6 +303,27 @@ body {
                 </tr>
             </table>
             <br />
+        </div>
+
+        <div v-if="vm.page==2" class="instructionPage">
+            <h2>3. List your options</h2>
+            <p>For example: computers you might buy or the colleges you might attend. You can add more options later.</p>
+            <table class="narrowTable">
+                <tr>
+                    <td>Options</td>
+                </tr>
+                <tr v-for="option in vm.options">
+                    <td><input v-model="option.name" placeholder="option"></td>
+                    <td><button v-if="" v-on:click="removeOption(option)">remove option</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <button v-on:click="addOption()">add Option</button>
+                    </td>
+                </tr>
+            </table>
+            <p>Once your options have been added, click the <b>Next</b> button. You can also skip these instructions by scrolling
+                down and entering the data directly into the tool.</p>
         </div>
 
         <div v-if="vm.page==3" class="instructionPage">
